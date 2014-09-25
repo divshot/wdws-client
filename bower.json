@@ -1,0 +1,30 @@
+{
+  "name": "wdws-client",
+  "main": "dist/wdws-client.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/divshot/wdws-client",
+  "authors": [
+    "Michael Bleigh <mbleigh@mbleigh.com>"
+  ],
+  "description": "Client for the Working Directory Web Service",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "wdws",
+    "web",
+    "sockets",
+    "filesystem"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

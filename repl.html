@@ -43,11 +43,15 @@
         _pre.innerText = args.map(JSON.stringify).join(', ') + "\n\n" + _pre.innerText;
       }
       
+      var logError = function(err) {
+        _pre.innerHTML = "<span style='color: #c00;'>" + JSON.stringify(err) + "</span>\n" + _pre.innerHTML;
+      }
+      
       document.querySelector("#connect_form").addEventListener('submit', function(e) {
         e.preventDefault();
         var url = document.querySelector('#wdws_url').value;
         wdws = new window.WDWSClient(url);
-        wdws.io.on('connect', function() {
+        wdws.connect(function() {
           logResponse("----> Connected!")
         });
         console.log(window.wdws);
@@ -58,7 +62,7 @@
         var command = document.querySelector('#command').value;
         var params = JSON.parse(document.querySelector('#params').value);
         
-        wdws.run(command, params, logResponse);
+        wdws.run(command, params).then(logResponse, logError);
       });
     </script>
   </body>
