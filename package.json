@@ -1,0 +1,27 @@
+{
+  "name": "wdws-client",
+  "version": "0.0.0",
+  "description": "Client for connecting to WDWS (Working Directory Web Service)",
+  "main": "index.js",
+  "keywords": [
+    "wdws",
+    "client"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/divshot/wdws-client"
+  },
+  "author": "Michael Bleigh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/divshot/wdws-client/issues"
+  },
+  "homepage": "https://github.com/divshot/wdws-client",
+  "dependencies": {
+    "promise": "^6.0.0",
+    "socket.io-client": "^1.1.0"
+  }
+}
