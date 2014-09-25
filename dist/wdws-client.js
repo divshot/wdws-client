@@ -6,39 +6,14 @@ function WDWSClient(url) {
   this.io = io(url);
 }
 
-WDWSClient.prototype.command = function(name, command, callback) {
+WDWSClient.prototype.run = function(cmd, params, callback) {
   var that = this;
   return new Promise(function(resolve, reject) {
-    that.io.emit(name, command, function(err) {
+    that.io.emit(cmd, params, function(err) {
       var rest = Array.prototype.slice.call(arguments, 1);
-      // console.log(err, rest);
       err ? reject(err) : resolve.apply(null, rest);
     });
   }).nodeify(callback);
-}
-
-WDWSClient.prototype.list = function(path, callback) {
-  return this.command('list', {path: path}, callback);
-}
-
-WDWSClient.prototype.put = function(path, data, callback) {
-  return this.command('put', {path: path, data: data}, callback);
-}
-
-WDWSClient.prototype.get = function(path, callback) {
-  return this.command('get', {path: path}, callback);
-}
-
-WDWSClient.prototype.mkdir = function(path, callback) {
-  return this.command('mkdir', {path: path}, callback);
-}
-
-WDWSClient.prototype.rm = function(path, callback) {
-  return this.command('rm', {path: path, recursive: false}, callback);
-}
-
-WDWSClient.prototype.rmr = function(path, callback) {
-  return this.command('rm', {path: path, recursive: true}, callback);
 }
 
 module.exports = WDWSClient;
