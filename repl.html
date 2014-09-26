@@ -51,8 +51,11 @@
         e.preventDefault();
         var url = document.querySelector('#wdws_url').value;
         wdws = new window.WDWSClient(url);
-        wdws.connect(function() {
-          logResponse("----> Connected!")
+        wdws.connect();
+        ['connect', 'connect_error', 'connect_timeout', 'reconnect_attempt', 'reconnecting', 'reconnect_error', 'reconnect_failed'].forEach(function(evt) {
+          wdws.on(evt, function() {
+            logResponse.apply(null, ["[EVENT]", evt].concat(Array.prototype.slice.call(arguments, 0)));;
+          });
         });
         console.log(window.wdws);
       });
